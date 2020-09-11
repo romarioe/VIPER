@@ -21,6 +21,7 @@ protocol CoursesListViewOutputProtocol: class {
      func selectedRow(at indexPath: IndexPath)
      var  course: Course? { get }
      var imageData: Data? { get }
+     func showDetailsViewController()
 }
 
 
@@ -56,16 +57,16 @@ extension ViewController: UITableViewDataSource{
         let imageData = presenter.imageData
         cell.imageView?.image = UIImage(data: imageData!)
         return cell
-    }
-    
-    
-    
-    
+    }   
 }
 
 
 
 extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.selectedRow(at: indexPath)
+        presenter.showDetailsViewController()
+    }
     
 }
 

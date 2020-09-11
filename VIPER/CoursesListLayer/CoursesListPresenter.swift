@@ -11,7 +11,7 @@ import Foundation
 
 class CoursesListPresenter: CoursesListViewOutputProtocol{
 
-
+    
    unowned let view: CoursesListViewInputProtocol!
      var interactor: CoursesListInteractorInputProtocol!
      var router: CoursesListRouterProtocol!
@@ -55,6 +55,12 @@ class CoursesListPresenter: CoursesListViewOutputProtocol{
 
     func showCourses() {
         interactor.fetchCourses()
+    }
+    
+    
+    func showDetailsViewController() {
+        guard let course = course else {return}
+        router.openDetailsViewController(with: course)
     }
     
     

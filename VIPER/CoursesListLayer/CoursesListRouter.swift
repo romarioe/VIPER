@@ -11,10 +11,12 @@ import Foundation
 
 protocol CoursesListRouterProtocol {
     init(viewController: ViewController)
+    func openDetailsViewController(with course: Course)
 }
 
 
 class CoursesListRouter: CoursesListRouterProtocol{
+
     
     unowned let viewController: ViewController
     
@@ -23,5 +25,11 @@ class CoursesListRouter: CoursesListRouterProtocol{
     }
     
     
+    
+    func openDetailsViewController(with course: Course) {
+        viewController.performSegue(withIdentifier: "showDetails", sender: course)
+    }
+    
+
     
 }
